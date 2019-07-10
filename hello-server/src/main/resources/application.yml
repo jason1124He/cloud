@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: hello-server
+server:
+#  port: 8081
+#  轮询负载测试
+  port: 8083
+
+#eurekaHost: http://192.168.2.173:8761/eureka/
+
+eureka:
+  #设置显示服务的ip和端口
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://192.168.2.173:8761/eureka/
+#      defaultZone: ${eurekaHost}
+
+
+
+

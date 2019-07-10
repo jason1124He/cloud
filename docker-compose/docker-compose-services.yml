@@ -1,0 +1,28 @@
+version: "2"
+services:
+#
+#  feign-service:
+#    image: feign-server-0.0.1-SNAPSHOT
+#    ports:
+#      - 8090:8090
+#
+#  feign-service_2:
+#    image: feign-server-2-0.0.1-SNAPSHOT
+#    ports:
+#      - 8091:8091
+#
+#  gate-way-service:
+#    image: gateway-server-0.0.1-SNAPSHOT
+#    ports:
+#      - 8098:8098
+#
+#  ribbon-service:
+#    image: ribbon-server-0.0.1-SNAPSHOT
+#    ports:
+#      - 8082:8082
+
+  hello-service:
+    build: /usr/local/myApp/mycloud/hello-server
+    image: hello-service
+    ports:
+      - 8083:8083

@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: dev
+###设置日志输出的格式
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss,SSS} - %msg%n"
+    #    #设置日志级别
+    level: debug
+  ##设置日志文件的输出位置
+  ##  path:
+  ##设置输出日志文件的名称
+  file: log/log.log
+---
+server:
+  port: 8761
+eureka:
+  #关闭自我保护机制，保证不可用及时踢出
+  server:
+    enable-self-preservation: false
+#  instance:
+#    hostname: eureka-service #eureka实例的主机名
+#    prefer-ip-address: true
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serverUrl:
+      defaultZone: http://localhost:8762/eureka/ #eureka相互注册
+    #自身不到注册中心注册
+    fetch-registry: false
+    register-with-eureka: false
+spring:
+  profiles: dev

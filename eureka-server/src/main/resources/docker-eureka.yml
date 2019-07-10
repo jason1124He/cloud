@@ -1,0 +1,39 @@
+version: "3"
+services:
+  eureka-service1:
+    image: eureka-server:0.0.1
+    build: /usr/local/myApp/cloud7_8
+    deploy:
+      replicas: 1 #replicated的服务副本数量
+      update_config:
+        parallelism: 1 #每次更新副本数量
+        delay: 2s  #每次更新间隔
+      restart_policy: #服务重启条件
+        condition: on-failure
+    ports:
+      - 8761:8761
+    networks:
+      - eureka-net
+    environment:
+      - spring.profile.active=eureka-service1
+
+  eureka-service2:
+    image: eureka-server:0.0.1
+    build: /usr/local/myApp/cloud7_8
+    ports:
+      - 8762:8762
+    deploy:
+      replicas: 1 #replicated的服务副本数量
+      update_config:
+        parallelism: 1 #每次更新副本数量
+        delay: 2s  #每次更新间隔
+      restart_policy: #服务重启条件
+        condition: on-failure
+    networks:
+      - eureka-net
+    environment:
+      - spring.profile.active=eureka-service2
+
+networks:
+  eureka-net:
+    driver: overlay

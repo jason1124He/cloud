@@ -1,0 +1,15 @@
+#注册中心服务的名称
+spring:
+  application:
+    name: feign-server-2
+server:
+  port: 8091
+#将接口暴露到注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#开启服务降级处理
+feign:
+  hystrix:
+    enabled: true

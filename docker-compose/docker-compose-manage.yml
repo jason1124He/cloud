@@ -1,0 +1,16 @@
+version: "2"
+services:
+#  指定服务名称
+  eureka-service-1:
+    build: /usr/local/myApp/mycloud/
+    image: eureka-service
+    ports:
+      - 8671:8671
+#    指定环境dock
+#    environment:
+#      - spring.profiles.active=dev
+#  定义第二个eureka服务
+#  eureka-service-2:
+#    image: eureka-server-0.0.1-SNAPSHOT
+#    ports:
+#      - 8672:8671
